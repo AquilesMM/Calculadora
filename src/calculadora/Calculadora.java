@@ -32,7 +32,7 @@ la defincion de un argumento seguido de ...  Ejemplo double...
     }
 
     public double dividir(List<Double> nums){
-        if(nums.isEmpty()) return 0;
+        if((nums.isEmpty()) || (nums.get(0) == 0)) return 0 ;
         double resultado = nums.get(0);
 
         for (int i = 1; i < nums.size(); i++){

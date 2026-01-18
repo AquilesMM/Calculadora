@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import calculadora.Calculadora;
+import calculadora.Herramientas;
 public class Menu {
 
     public static void menu(){
@@ -11,6 +12,8 @@ public class Menu {
         Calculadora calculadora = new Calculadora();
         List<Double> listaNumeros = new ArrayList<>();
         int opcion = 0;
+        double resultado = 0;
+        Herramientas herramientas = new Herramientas();
 
 
         while(opcion != 6) {
@@ -24,29 +27,37 @@ public class Menu {
             System.out.print("Ingrese la opcion que desee: ");
             opcion = scanner.nextInt();
             String dato = ".";
+            System.out.print(": ");
 
 
 
-            switch(opcion){
+            switch(opcion) {
                 case 1:
-                    while (!dato.equals("=")){
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = herramientas.validador(listaNumeros, resultado);
+                        System.out.print(" + ");
+                    }
+                    while (!dato.equals("=")) {
                         dato = scanner.next();
-                        if (dato.equals("=") ){
-                            double resultado = calculadora.sumar(listaNumeros);
+                        if (dato.equals("=")) {
+                            resultado = calculadora.sumar(listaNumeros);
                             System.out.println(resultado);
                             break;
-                        }else{
+                        } else {
                             listaNumeros.add(Double.parseDouble(dato));
-                            System.out.println("+");
+                            System.out.print(" + ");
                         }
                     }
                     break;
-
                 case 2:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = herramientas.validador(listaNumeros, resultado);
+                        System.out.print(" - ");
+                    }
                     while (!dato.equals("=")){
                         dato = scanner.next();
                         if (dato.equals("=") ){
-                            double resultado = calculadora.restar(listaNumeros);
+                            resultado = calculadora.restar(listaNumeros);
                             System.out.println(resultado);
                             break;
                         }else{
@@ -56,10 +67,14 @@ public class Menu {
                     }
                     break;
                 case 3:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = herramientas.validador(listaNumeros, resultado);
+                        System.out.print(" * ");
+                    }
                     while (!dato.equals("=")){
                         dato = scanner.next();
                         if (dato.equals("=") ){
-                            double resultado = calculadora.multiplicar(listaNumeros);
+                            resultado = calculadora.multiplicar(listaNumeros);
                             System.out.println(resultado);
                             break;
                         }else{
@@ -68,12 +83,15 @@ public class Menu {
                         }
                     }
                     break;
-
                 case 4:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = herramientas.validador(listaNumeros, resultado);
+                        System.out.print(" / ");
+                    }
                     while (!dato.equals("=")){
                         dato = scanner.next();
                         if (dato.equals("=") ){
-                            double resultado = calculadora.dividir(listaNumeros);
+                            resultado = calculadora.dividir(listaNumeros);
                             System.out.println(resultado);
                             break;
                         }else{
@@ -90,7 +108,7 @@ public class Menu {
                         break;
                     default:
                         System.out.println("Opcion Incorrecta");
-                }
+            }
 
         }
     }
