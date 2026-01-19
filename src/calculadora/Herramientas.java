@@ -9,4 +9,11 @@ public class Herramientas {
         listaNumeros.add(resultado);
         return listaNumeros;
     }
+
+
+
+
+
+
+
 }
