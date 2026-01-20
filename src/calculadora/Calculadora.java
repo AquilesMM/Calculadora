@@ -1,5 +1,5 @@
 package calculadora;
-import java.util.List;
+
 public class Calculadora {
 /*
 Clase encargada de contener las funciones encargadas de realizar las operaciones basicas de la calculadora
@@ -12,17 +12,17 @@ la defincion de un argumento seguido de ...  Ejemplo double...
 
 
  */
-    public static double sumar(List<Double> nums){
-        if(nums.isEmpty()) return 0;
+    public double sumar(double... nums){
+        if(nums.length == 0) return 0;
         double resultado  = 0;
-        for(double i : nums) {
+        for(double i: nums) {
             resultado += i;
         }
         return resultado;
     }
 
-    public double multiplicar(List<Double> nums){
-        if(nums.isEmpty()) return 0;
+    public double multiplicar(double... nums){
+        if(nums.length == 0) return 0;
         double resultado = 1;
 
         for(double i: nums){
@@ -31,26 +31,30 @@ la defincion de un argumento seguido de ...  Ejemplo double...
         return resultado;
     }
 
-    public double dividir(List<Double> nums){
-        if((nums.isEmpty()) || (nums.get(0) == 0)) return 0 ;
-        double resultado = nums.get(0);
+    public double dividir(double... nums){
+        if(nums.length == 0) {
+            return 0;
+        }
+        double resultado = nums[0];
 
-        for (int i = 1; i < nums.size(); i++){
-            if(nums.get(i) == 0){ //se realiza un pequeño manejo de errores. que despues puede corregirse en la clase de dichos manejos
+        for (int i = 1; i < nums.length; i++){
+            if(nums[i] == 0){ //se realiza un pequeño manejo de errores. que despues puede corregirse en la clase de dichos manejos
                 return 0;
             }else{
-                resultado /= nums.get(i);
+                resultado /= nums[i];
             }
         }
         return resultado;
     }
 
-    public double restar(List<Double> nums){
-        if(nums.isEmpty()) return 0;
-        double resultado = nums.get(0);
+    public double restar(double... nums){
+        if(nums.length == 0) {
+            return 0;
+        }
+        double resultado = nums[0];
 
-        for (int i = 1; i < nums.size(); i++){
-            resultado -= nums.get(i);
+        for (int i = 1; i < nums.length; i++){
+            resultado -= nums[i];
         }
         return resultado;
     }
