@@ -43,7 +43,6 @@ la defincion de un argumento seguido de ...  Ejemplo double...
             }
         }
         return resultado;
-        System.out.println("Hola mundo");
     }
 
     public double restar(List<Double> nums){
