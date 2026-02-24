@@ -28,6 +28,7 @@ replay_pid*
 .idea/
 *.iml
 s
+
 # Compilados de Java
 /out/
 /target/
