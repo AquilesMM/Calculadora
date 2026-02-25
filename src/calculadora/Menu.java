@@ -101,13 +101,9 @@ public class Menu {
                     default:
                         System.out.println("Opcion Incorrecta");
                 }
-            }catch()
-            a
-
-        {
+            }catch(Exception e){
 
             }
-
 
         }
     }
