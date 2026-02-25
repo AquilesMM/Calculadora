@@ -1,5 +1,5 @@
 package calculadora;
-import Exception;
+
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -42,8 +42,8 @@ public class Menu {
                                 System.out.print(" + ");
                             }
                         } catch(NumberFormatException e){
-                            System.out.println("Utilizo un termino que no es un numero:" );
-                            e.printStackTrace();
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
                     }
                     break;
@@ -67,8 +67,8 @@ public class Menu {
                                     System.out.println("-");
                                 }
                             }catch(NumberFormatException e){
-                                System.out.println("Utilizo un termino que no es un numero:" );
-                                e.printStackTrace();
+                                System.out.println("Utilizo un termino que no es un numero" );
+                                System.out.println("Ingrese nuevamente un valor: ");
                             }
 
                         }
@@ -92,8 +92,8 @@ public class Menu {
                                 System.out.println("*");
                             }
                         }catch(NumberFormatException e){
-                            System.out.println("Utilizo un termino que no es un numero:" );
-                            e.printStackTrace();
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
 
                     }
@@ -119,11 +119,11 @@ public class Menu {
                                 System.out.println("/");
                             }
                         }catch(NumberFormatException e){
-                            System.out.println("Utilizo un termino que no es un numero:" );
-                            e.printStackTrace();
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }catch(ArithmeticException e){
                             System.out.println("No es posible dividir por cero");
-                            e.printStackTrace();
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
                     }
                     break;
