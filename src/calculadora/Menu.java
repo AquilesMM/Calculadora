@@ -1,7 +1,5 @@
 package calculadora;
 
-
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -49,7 +47,7 @@ public class Menu {
                     break;
 
 
-    
+
                     case 2:
                         if (!listaNumeros.isEmpty()) {
                             listaNumeros = menu.comprueba(listaNumeros, resultado);
@@ -98,9 +96,6 @@ public class Menu {
 
                     }
                     break;
-
-
-
 
                 case 4:
                     if (!listaNumeros.isEmpty()) {
