@@ -1,5 +1,8 @@
 package calculadora;
 import java.util.List;
+import java.lang.ArithmeticException;
+import java.util.InputMismatchException;
+
 public class Calculadora {
 /*
 Clase encargada de contener las funciones encargadas de realizar las operaciones basicas de la calculadora
@@ -12,7 +15,7 @@ la defincion de un argumento seguido de ...  Ejemplo double...
 
 
  */
-    public static double sumar(List<Double> nums){
+    public static double sumar(List<Double> nums) throws InputMismatchException {
         if(nums.isEmpty()) return 0;
         double resultado  = 0;
         for(double i : nums) {
@@ -21,7 +24,7 @@ la defincion de un argumento seguido de ...  Ejemplo double...
         return resultado;
     }
 
-    public double multiplicar(List<Double> nums){
+    public double multiplicar(List<Double> nums) throws InputMismatchException{
         if(nums.isEmpty()) return 0;
         double resultado = 1;
 
@@ -31,21 +34,19 @@ la defincion de un argumento seguido de ...  Ejemplo double...
         return resultado;
     }
 
-    public double dividir(List<Double> nums){
+    public double dividir(List<Double> nums) throws ArithmeticException, InputMismatchException {
         if((nums.isEmpty()) || (nums.get(0) == 0)) return 0 ;
         double resultado = nums.get(0);
 
         for (int i = 1; i < nums.size(); i++){
-            if(nums.get(i) == 0){ //se realiza un pequeño manejo de errores. que despues puede corregirse en la clase de dichos manejos
-                return 0;
-            }else{
-                resultado /= nums.get(i);
-            }
+
+            resultado /= nums.get(i); // removido el error de manejo manual
+
         }
         return resultado;
     }
 
-    public double restar(List<Double> nums){
+    public double restar(List<Double> nums) throws InputMismatchException{
         if(nums.isEmpty()) return 0;
         double resultado = nums.get(0);
 
