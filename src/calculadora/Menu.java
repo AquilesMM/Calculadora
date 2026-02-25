@@ -22,14 +22,14 @@ public class Menu {
             String dato = ".";
             System.out.print(": ");
 
-            try{
-                switch(opcion) {
-                    case 1:
-                        if (!listaNumeros.isEmpty()) {
-                            listaNumeros = menu.comprueba(listaNumeros, resultado);
-                            System.out.print(" + ");
-                        }
-                        while (!dato.equals("=")) {
+            switch(opcion) {
+                case 1:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = menu.comprueba(listaNumeros, resultado);
+                        System.out.print(" + ");
+                    }
+                    while (!dato.equals("=")) {
+                        try{
                             dato = scanner.next();
                             if (dato.equals("=")) {
                                 resultado = calculadora.sumar(listaNumeros);
@@ -39,31 +39,47 @@ public class Menu {
                                 listaNumeros.add(Double.parseDouble(dato));
                                 System.out.print(" + ");
                             }
+                        } catch(NumberFormatException e){
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
-                        break;
+                    }
+                    break;
+
+
+
                     case 2:
                         if (!listaNumeros.isEmpty()) {
                             listaNumeros = menu.comprueba(listaNumeros, resultado);
                             System.out.print(" - ");
                         }
                         while (!dato.equals("=")){
-                            dato = scanner.next();
-                            if (dato.equals("=") ){
-                                resultado = calculadora.restar(listaNumeros);
-                                System.out.println(resultado);
-                                break;
-                            }else{
-                                listaNumeros.add(Double.parseDouble(dato));
-                                System.out.println("-");
+                            try{
+                                dato = scanner.next();
+                                if (dato.equals("=") ){
+                                    resultado = calculadora.restar(listaNumeros);
+                                    System.out.println(resultado);
+                                    break;
+                                }else{
+                                    listaNumeros.add(Double.parseDouble(dato));
+                                    System.out.println("-");
+                                }
+                            }catch(NumberFormatException e){
+                                System.out.println("Utilizo un termino que no es un numero" );
+                                System.out.println("Ingrese nuevamente un valor: ");
                             }
+
                         }
                         break;
-                    case 3:
-                        if (!listaNumeros.isEmpty()) {
-                            listaNumeros = menu.comprueba(listaNumeros, resultado);
-                            System.out.print(" * ");
-                        }
-                        while (!dato.equals("=")){
+
+
+                case 3:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = menu.comprueba(listaNumeros, resultado);
+                        System.out.print(" * ");
+                    }
+                    while (!dato.equals("=")){
+                        try{
                             dato = scanner.next();
                             if (dato.equals("=") ){
                                 resultado = calculadora.multiplicar(listaNumeros);
@@ -73,14 +89,21 @@ public class Menu {
                                 listaNumeros.add(Double.parseDouble(dato));
                                 System.out.println("*");
                             }
+                        }catch(NumberFormatException e){
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
-                        break;
-                    case 4:
-                        if (!listaNumeros.isEmpty()) {
-                            listaNumeros = menu.comprueba(listaNumeros, resultado);
-                            System.out.print(" / ");
-                        }
-                        while (!dato.equals("=")){
+
+                    }
+                    break;
+
+                case 4:
+                    if (!listaNumeros.isEmpty()) {
+                        listaNumeros = menu.comprueba(listaNumeros, resultado);
+                        System.out.print(" / ");
+                    }
+                    while (!dato.equals("=")){
+                        try{
                             dato = scanner.next();
                             if (dato.equals("=") ){
                                 resultado = calculadora.dividir(listaNumeros);
@@ -90,20 +113,25 @@ public class Menu {
                                 listaNumeros.add(Double.parseDouble(dato));
                                 System.out.println("/");
                             }
+                        }catch(NumberFormatException e){
+                            System.out.println("Utilizo un termino que no es un numero" );
+                            System.out.println("Ingrese nuevamente un valor: ");
+                        }catch(ArithmeticException e){
+                            System.out.println("No es posible dividir por cero");
+                            System.out.println("Ingrese nuevamente un valor: ");
                         }
-                        break;
-                    case 5:
-                        listaNumeros.clear();
-                        break;
-                    case 6:
-                        System.out.println("FIN DEL PROGRAMA");
-                        break;
-                    default:
-                        System.out.println("Opcion Incorrecta");
-                }
-            }catch(Exception e){
-
+                    }
+                    break;
+                case 5:
+                    listaNumeros.clear();
+                    break;
+                case 6:
+                    System.out.println("FIN DEL PROGRAMA");
+                    break;
+                default:
+                    System.out.println("Opcion Incorrecta");
             }
+
 
         }
     }
