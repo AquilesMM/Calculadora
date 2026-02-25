@@ -2,6 +2,7 @@ package calculadora;
 
 import javax.swing.*;
 import java.awt.*;
+import javax.swing.border.EmptyBorder;
 
 
 public class CalculadoraGUI extends JFrame {
@@ -12,7 +13,7 @@ public class CalculadoraGUI extends JFrame {
 
     public CalculadoraGUI() {
 
-        //Settings y display
+        //settings de ventana y cosas
         Font fontcalculadora = new Font("Monospaced", Font.BOLD, 24);
         ImageIcon icono = new ImageIcon("iconocalculadora.png");
         this.setTitle("Calculadora");
@@ -22,6 +23,14 @@ public class CalculadoraGUI extends JFrame {
         this.setSize(300,400);
         this.setIconImage(icono.getImage());
 
+
+        //display
+        this.displayField = new JTextField();
+        this.displayField.setFont(fontcalculadora);
+        this.displayField.setEditable(false);
+        this.displayField.setBorder(new EmptyBorder(20, 10, 15, 10));
+        this.displayField.setHorizontalAlignment(JTextField.RIGHT);
+        this.add(this.displayField, BorderLayout.NORTH);
 
         //Panel de botones
         this.buttonPanel = new JPanel();
@@ -43,7 +52,8 @@ public class CalculadoraGUI extends JFrame {
         for (int i = 0; i < labels.length; i++) {
             this.buttons[i] = new JButton(labels[i]);
             this.buttons[i].setFont(fontcalculadora);
-            //add action listeners aca
+            // action listener
+            this.buttons[i].addActionListener(e -> procesarInputs(e.getActionCommand()));
             this.buttonPanel.add(this.buttons[i]);
         }
 
@@ -57,5 +67,30 @@ public class CalculadoraGUI extends JFrame {
             CalculadoraGUI calc = new CalculadoraGUI();
             calc.setVisible(true);
         });
+    }
+
+    private void procesarInputs(String comando) {
+
+        String stringTexto;
+        //switch para botones especiales
+        switch (comando) {
+            case "C":
+                this.displayField.setText("");
+                break;
+            case "=":
+                //aca mandar string a calculadora
+                break;
+
+            case "X":
+                stringTexto = this.displayField.getText();
+                this.displayField.setText(stringTexto + "*");
+                break;
+
+            default:
+                // append del valor numerico del boton
+                stringTexto = this.displayField.getText();
+                this.displayField.setText(stringTexto + comando);
+                break;
+        }
     }
 }
