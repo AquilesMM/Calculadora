@@ -1,6 +1,8 @@
 package calculadora;
 import java.util.List;
 import java.lang.ArithmeticException;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class Calculadora{
 /*
@@ -57,4 +59,17 @@ la defincion de un argumento seguido de ...  Ejemplo double...
         return resultado;
     }
 
+
+    public static double procesarExpresion(String expresion){
+        try{
+            //coso de la libreria
+            Expression e = new ExpressionBuilder(expresion).build();
+
+            return e.evaluate();
+
+        } catch (ArithmeticException | IllegalArgumentException ex) {
+            System.err.println("Error de evaluacion: " + ex.getMessage());
+            throw new RuntimeException("Error de sintaxis");
+        }
+    }
 }
