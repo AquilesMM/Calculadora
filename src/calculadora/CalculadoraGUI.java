@@ -79,6 +79,21 @@ public class CalculadoraGUI extends JFrame {
                 break;
             case "=":
                 //aca mandar string a calculadora
+                stringTexto = this.displayField.getText();
+                if (!stringTexto.isEmpty()) {
+                    try {
+                        //tirar la expresion a lo que se necesite, hay que agregar un metodo "procesarExpresion"
+                        //rezando para que la libreria tire los datos como int/double/float y no como texto
+                        double resultado = Calculadora.procesarExpresion(stringTexto);
+
+                        //mostrar el resultado
+                        this.displayField.setText((String.valueOf(resultado)));
+
+                    } catch (Exception e){
+                        //error generico por si acaso
+                        this.displayField.setText("Error");
+                    }
+                }
                 break;
 
             case "X":
