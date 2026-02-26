@@ -2,6 +2,7 @@ package calculadora;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 import javax.swing.border.EmptyBorder;
 
 
@@ -102,6 +103,10 @@ public class CalculadoraGUI extends JFrame {
                 break;
 
             default:
+                //si mostro error que se borre antes de empezar a escribir
+                if (Objects.equals(this.displayField.getText(), "Error"))
+                    this.displayField.setText("");
+
                 // append del valor numerico del boton
                 stringTexto = this.displayField.getText();
                 this.displayField.setText(stringTexto + comando);
